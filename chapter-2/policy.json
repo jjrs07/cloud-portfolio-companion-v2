@@ -1,0 +1,33 @@
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Effect": "Allow",
+               "Action": [
+                   "s3:PutObject",
+                   "s3:GetObject",
+                   "s3:ListBucket"
+               ],
+               "Resource": [
+                   "arn:aws:s3:::your-backup-bucket-name",
+                   "arn:aws:s3:::your-backup-bucket-name/*"
+               ]
+           }
+       ]
+   }
+   ```
+3. Name it `S3BackupWritePolicy` and click **Create policy**.
+4. Go to **Roles** > **Create role**.
+5. Select **AWS service** as the trusted entity and **EC2** as the service. Click **Next**.
+6. Search for and check `S3BackupWritePolicy`. Click **Next**.
+7. Name the role `EC2S3BackupRole` and click **Create role**.
+
+##### Step 2: Attach the Role to Your EC2 Instance
+1. Go to the **EC2** Console.
+2. Select your instance (`production-web-server`).
+3. Click **Actions** > **Security** > **Modify IAM role**.
+4. Select `EC2S3BackupRole` and click **Update IAM role**.
+5. *Note:* Your EC2 instance can now interact securely with your S3 bucket using temporary, self-rotating credentials.
+
+##### Step 3: Create the S3 Backup Bucket
+Run the following CLI command to spin up your bucket:

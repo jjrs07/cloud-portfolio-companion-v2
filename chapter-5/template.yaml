@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'Cloud Portfolio Version 2 - Serverless AI-Powered Resume Analyzer'
+
+Resources:
+  # 1. Lambda Backend
+  ResumeAnalyzerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.11
+      CodeUri: ./lambda
+      Timeout: 30 # Increased to allow for LLM execution latency
+      MemorySize: 256
+      Policies:
+        # Grant permissions to call Llama 3 via Bedrock
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-8b-instruct-v1:0
+      Events:
+        AnalyzeApi:
+          Type: Api
+          Properties:
+            Path: /analyze
+            Method: POST
+
+  # 2. Frontend S3 Bucket for Static Web Hosting
+  FrontendBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "portfolio-ai-analyzer-${AWS::AccountId}"
+      PublicAccessBlockConfiguration:
+        BlockAllPublicAccess: false
+      WebsiteConfiguration:
+        IndexDocument: index.html
+
+  # 3. S3 Bucket Policy to allow public reads (Website view)
+  FrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref FrontendBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: "*"
+            Action: s3:GetObject
+            Resource: !Sub "arn:aws:s3:::${FrontendBucket}/*"

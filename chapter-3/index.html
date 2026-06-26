@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cloud Engineering Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --aws-orange: #ff9900;
+      --aws-blue: #0073bb;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .portfolio-container {
+      width: 100%;
+      max-width: 800px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .profile-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--aws-orange) 0%, #ff5500 100%);
+      color: var(--bg-dark);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #f8fafc, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .bio {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .tech-badge {
+      background-color: var(--border);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      color: var(--text-main);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 600px) {
+      .project-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .project-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 20px -10px rgba(56, 189, 248, 0.2);
+    }
+    .project-num {
+      color: var(--aws-orange);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .project-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .project-tag {
+      background-color: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="portfolio-container">
+    <header>
+      <span class="profile-badge">AWS Cloud Engineer</span>
+      <h1>Jane Doe</h1>
+      <p class="subtitle">Building Secure, Automated & Scalable Cloud Solutions</p>
+      <p class="bio">
+        Aspiring Cloud Engineer showcasing production-ready infrastructure deployments. 
+        Specialized in IaC, secure network boundaries, and serverless operations.
+      </p>
+      <div class="tech-stack">
+        <span class="tech-badge">AWS EC2</span>
+        <span class="tech-badge">Amazon S3</span>
+        <span class="tech-badge">CloudFront</span>
+        <span class="tech-badge">AWS IAM</span>
+        <span class="tech-badge">CloudWatch</span>
+        <span class="tech-badge">AWS CLI</span>
+      </div>
+    </header>
+
+    <h2 class="section-title">Completed Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-num">Project 01</div>
+        <h3 class="project-name">Automated Health Alerting</h3>
+        <p class="project-desc">Configured CPU and status monitoring alarms using Amazon CloudWatch linked to SNS email notification topics.</p>
+        <div class="project-tags">
+          <span class="project-tag">CloudWatch</span>
+          <span class="project-tag">SNS</span>
+          <span class="project-tag">EC2</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Project 02</div>
+        <h3 class="project-name">Secure Backup Automation</h3>
+        <p class="project-desc">Authored secure Boto3 script running on EC2 via IAM Instance Profiles (no keys on disk) for S3 uploads.</p>
+        <div class="project-tags">
+          <span class="project-tag">IAM Roles</span>
+          <span class="project-tag">S3</span>
+          <span class="project-tag">Bash</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Deployed securely via Amazon S3 and CloudFront CDN.</p>
+      <p>Connect with me on <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a> | view code on <a href="https://github.com/YOUR-GITHUB" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>
