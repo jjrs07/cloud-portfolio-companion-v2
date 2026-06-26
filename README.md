@@ -2,6 +2,12 @@
 
 Welcome to the official companion code repository for the e-book **"Build Your First Cloud Portfolio" (Version 2.0)** by James Santos.
 
+> [!IMPORTANT]
+> **Looking for the e-book?**  
+> This code repository is a companion to the hands-on workbook **"Build Your First Cloud Portfolio (Version 2.0)"**. The book features step-by-step instructions, system architecture diagrams, and "What If It Breaks? (Interview Gold)" troubleshooting blueprints designed to help you construct a job-winning portfolio and ace technical interviews.
+> 
+> 👉 **[Get your copy of the e-book here!](https://portfolio.mastercloud.guru)**
+
 This repository contains all the configuration files, automation scripts, and infrastructure-as-code templates detailed throughout the book's hands-on labs. Instead of copying and pasting code directly from your PDF reader, you can use these clean, production-ready files to deploy your portfolio components instantly.
 
 ---
