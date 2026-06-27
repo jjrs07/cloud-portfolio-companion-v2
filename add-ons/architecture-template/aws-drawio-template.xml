@@ -1,0 +1,46 @@
+<mxfile host="Electron" modified="2026-06-28T04:12:00.000Z" agent="5.0" version="20.0.0" type="device">
+  <diagram id="aws-portfolio-template" name="AWS Portfolio Template">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- User Browser Client -->
+        <mxCell id="user-client" value="Web Client&#xa;(Browser)" style="shape=mxgraph.aws4.user;html=1;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#232F3E;strokeColor=none;fontFamily=Helvetica;fontSize=12;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- API Gateway -->
+        <mxCell id="api-gateway" value="Amazon API Gateway&#xa;(HTTPS Endpoint)" style="shape=mxgraph.aws4.api_gateway;html=1;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#FF4F8B;strokeColor=none;fontFamily=Helvetica;fontSize=12;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Lambda Function -->
+        <mxCell id="lambda-function" value="AWS Lambda&#xa;(Python/Node.js Backend)" style="shape=mxgraph.aws4.lambda;html=1;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#FF9900;strokeColor=none;fontFamily=Helvetica;fontSize=12;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="380" y="200" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Amazon Bedrock -->
+        <mxCell id="bedrock-api" value="Amazon Bedrock&#xa;(Llama 3 8B LLM)" style="shape=mxgraph.aws4.bedrock;html=1;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#232F3E;strokeColor=none;fontFamily=Helvetica;fontSize=12;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow Client -> API Gateway -->
+        <mxCell id="arrow-1" value="HTTPS&#xa;POST Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#555555;strokeColor=#FF9900;strokeWidth=2;" edge="1" parent="1" source="user-client" target="api-gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow API Gateway -> Lambda -->
+        <mxCell id="arrow-2" value="Invokes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#555555;strokeColor=#FF9900;strokeWidth=2;" edge="1" parent="1" source="api-gateway" target="lambda-function">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow Lambda -> Bedrock -->
+        <mxCell id="arrow-3" value="bedrock:InvokeModel&#xa;(API Call)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#555555;strokeColor=#319795;strokeWidth=2;" edge="1" parent="1" source="lambda-function" target="bedrock-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
